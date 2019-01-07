@@ -1,13 +1,12 @@
 <template>
     <div class='container'>
         <SearchBar @termChange="onTermChange"></SearchBar> <!--same as v-on: termChange="onTermChange" -->
-        <VideoList :myVideos="videos"></VideoList> 
-        <!-- // myVideos refers to the data property that we want to show up inside the child 
+        <VideoList @videoSelect="onVideoSelect" :myVideos="videos"></VideoList> 
+        <!-- // @videoSelect="onVideoSelect" from videolist componennt
+            // myVideos refers to the data property that we want to show up inside the child 
             // "videos", however is the data property as it appears in the app (or parent) component 
             // v-bind: videos="videos" binds the parents and child components together, but we can use shorthand syntax of :videos="videos"/
             -->
-            
-
     </div>
 
 </template>
@@ -28,10 +27,11 @@ export default {
     // data property that return an object, which will return the video object from YouTube
     data() {
         return { videos: [] };
-
-
     },
     methods: {
+        onVideoSelect(myVideo) {
+            console.log(myVideo);
+        },
         // onTermChange: function() {
         onTermChange(searchTerm) {
             axios.get('https://www.googleapis.com/youtube/v3/search', {
