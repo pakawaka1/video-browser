@@ -1,6 +1,15 @@
 <template>
 <ul>
-      <VideoListItem v-for="myVideo in myVideos"></VideoListItem>
+      <VideoListItem
+       v-for="myVideo in myVideos"
+       v-bind:myVideo = "myVideo"> <!--
+          // v-for is a vue directive to render a list of items based on an array
+          // v-bind binds the child property to the parent component -->
+
+
+
+
+      </VideoListItem>
 
 </ul>
 </template>
