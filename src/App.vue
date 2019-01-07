@@ -1,8 +1,8 @@
 <template>
     <div>
         <SearchBar @termChange="onTermChange"></SearchBar> <!--same as v-on: termChange="onTermChange" -->
-        <VideoList :videos="videos"></VideoList> 
-        <!-- // videos refers to the data property that we want to show up inside the child 
+        <VideoList :myVideos="videos"></VideoList> 
+        <!-- // myVideos refers to the data property that we want to show up inside the child 
             // "videos", however is the data property as it appears in the app (or parent) component 
             // v-bind: videos="videos" binds the parents and child components together, but we can use shorthand syntax of :videos="videos"/
             -->
