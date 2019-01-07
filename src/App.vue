@@ -1,6 +1,7 @@
 <template>
     <div class='container'>
         <SearchBar @termChange="onTermChange"></SearchBar> <!--same as v-on: termChange="onTermChange" -->
+        <VideoDetail v-bind:myVideo="selectedVideo" /> <!--selectedVideo property is passed down to VideoDetail-->
         <VideoList @videoSelect="onVideoSelect" :myVideos="videos"></VideoList> 
         <!-- // @videoSelect="onVideoSelect" from videolist componennt
             // myVideos refers to the data property that we want to show up inside the child 
@@ -14,6 +15,7 @@
 <script>
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
+import VideoDetail from './components/VideoDetail'
 
 import axios from 'axios'
 
@@ -22,15 +24,16 @@ export default {
     name: 'App',
     components: {
         SearchBar,
-        VideoList
+        VideoList,
+        VideoDetail
     },
     // data property that return an object, which will return the video object from YouTube
     data() {
-        return { videos: [] };
+        return { videos: [], selectedVideo: null };
     },
     methods: {
         onVideoSelect(myVideo) {
-            console.log(myVideo);
+            this.selectedVideo = myVideo;            
         },
         // onTermChange: function() {
         onTermChange(searchTerm) {
