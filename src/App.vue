@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='container'>
         <SearchBar @termChange="onTermChange"></SearchBar> <!--same as v-on: termChange="onTermChange" -->
         <VideoList :myVideos="videos"></VideoList> 
         <!-- // myVideos refers to the data property that we want to show up inside the child 
